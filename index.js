@@ -36,6 +36,10 @@ function taskCreator(task) {
     buttonDelete.classList.add('delete-btn')
     item.appendChild(buttonDelete)
 
+    buttonDelete.addEventListener('click', function() {
+        list.removeChild(item)
+    })
+
     list.insertAdjacentElement('afterbegin', item)
 }
 
@@ -46,5 +50,7 @@ taskCreator('Walk the dog')
 //User creates a task
 addBtn.addEventListener('click', function() {
     taskCreator(userInput.value)
-   console.log(userInput.value)
+    userInput.value = ''
 })
+
+//Delete a task

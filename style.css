@@ -46,7 +46,6 @@ input {
 
 ul {
     width: 380px;
-    min-height: 200px;
     list-style: none;
     display: flex;
     flex-direction: column;
