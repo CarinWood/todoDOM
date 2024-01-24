@@ -1,6 +1,11 @@
 //body
 let body = document.body
 
+//Heading
+let heading = document.createElement('h1')
+heading.innerText = 'Todo list'
+body.insertAdjacentElement("afterbegin", heading)
+
 // creating an input field: 
 let inputSection = document.createElement('section')
 inputSection.classList.add('input-section')
@@ -31,6 +36,10 @@ function taskCreator(task) {
     buttonDone.innerText = 'Done'
     item.appendChild(buttonDone)
 
+    buttonDone.addEventListener('click', function() {
+        itemP.classList.add('task-done')
+    })
+
     let buttonDelete = document.createElement('button')
     buttonDelete.innerText = 'Delete'
     buttonDelete.classList.add('delete-btn')
@@ -38,6 +47,27 @@ function taskCreator(task) {
 
     buttonDelete.addEventListener('click', function() {
         list.removeChild(item)
+    })
+    let upArrow = document.createElement('i')
+    upArrow.classList.add("material-icons")
+    upArrow.innerText = "arrow_upward"
+    item.appendChild(upArrow);
+    upArrow.addEventListener('click', function() {
+        let previousItem = item.previousElementSibling;
+        if (previousItem) {
+            list.insertBefore(item, previousItem);
+        }
+    })
+   
+    let downArrow = document.createElement('i')
+    downArrow.classList.add("material-icons")
+    downArrow.innerText = "arrow_downward"
+    item.appendChild(downArrow);
+    downArrow.addEventListener('click', function() {
+        let nextItem = item.nextElementSibling;
+        if (nextItem) {
+            list.insertBefore(nextItem, item);
+        }
     })
 
     list.insertAdjacentElement('afterbegin', item)
